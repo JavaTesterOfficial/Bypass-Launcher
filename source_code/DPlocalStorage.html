@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .clear-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .clear-btn:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Developer Panel</h1>
+
+    <button class="clear-btn" id="clearEOLStorage">Clear "dontShowEOLAgain" LocalStorage entry setting</button><br>
+    <button class="clear-btn" id="clearFirstVisitStorage">Clear "firstVisit" LocalStorage entry setting</button>
+
+    <script>
+        // Clear the local storage entry when the clear button is clicked
+        document.getElementById('clearEOLStorage').addEventListener('click', function() {
+            localStorage.removeItem('dontShowEOLAgain'); // Remove the entry from local storage
+            alert('Local storage entry \"dontShowEOLAgain\" has been successfully cleared.');
+        });
+        document.getElementById('clearFirstVisitStorage').addEventListener('click', function() {
+            localStorage.removeItem('firstVisit'); // Remove the entry from local storage
+            alert('Local storage entry \"firstVisit\" has been successfully cleared.');
+        });
+    </script>
+</body>
+</html>

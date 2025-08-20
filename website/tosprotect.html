@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>400 Bad Request</title>
+  <style>
+    /* Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      background-color: #f44336;
+      color: white;
+      overflow: hidden;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      user-select: none;
+      position: relative;
+    }
+
+    /* Big heading initially centered and large */
+    /* Initial big heading centered */
+    #main-heading {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(1);
+      font-size: 6rem; /* base size */
+      font-weight: 900;
+      text-align: center;
+      margin: 0;
+      transition: 
+        transform 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+        top 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+        color 0.3s ease;
+      z-index: 2;
+      white-space: nowrap;
+      filter: drop-shadow(0 0 10px rgba(0,0,0,0.6));
+      color: #ff0000; /* Start color consistent with animation */
+      animation: flashRed 1.6s infinite alternate;
+    }
+
+    /* Shrunk and moved-up heading */
+    #main-heading.shrink {
+      top: 10vh; /* moves near top */
+      transform: translateX(-50%) scale(0.5); /* scale down to half */
+      font-size: 6rem; /* keep base font size - scaling handles resizing */
+      animation: none;
+      color: #ff0000 !important; /* Fix color on shrink to avoid flicker */
+    }
+
+    /* Container for extra info - initially hidden below */
+    #extra-info {
+      max-width: 450px;
+      color: #ffecb3;
+      font-size: 1.25rem;
+      text-align: center;
+      margin-top: 0;
+      opacity: 0;
+      position: absolute;
+      left: 50%;
+      top: 130%;
+      transform: translateX(-50%);
+      transition: top 1s ease, opacity 1s ease;
+      user-select: text;
+      line-height: 1.4;
+      z-index: 1;
+    }
+
+    /* Show extra info by sliding up and becoming visible */
+    #extra-info.show {
+      top: 35vh;
+      opacity: 1;
+    }
+
+    /* Countdown number style - flashing effect */
+    #countdown {
+      font-weight: bold;
+      font-size: 2.2rem;
+      margin-top: 0.35rem;
+      color: #fff176;
+      animation: flashColor 1.6s infinite alternate;
+      display: inline-block;
+    }
+
+    /* Links style */
+    a {
+      color: #ffecb3;
+      text-decoration: underline;
+    }
+    a:hover,
+    a:focus {
+      color: #fff176;
+      outline: none;
+    }
+
+    /* Instruction text style */
+    #instruction {
+      font-size: 1rem;
+      font-style: italic;
+      margin-top: 1.5rem;
+      max-width: 450px;
+      color: #fff9c4;
+    }
+
+    /* Flash color keyframes */
+    @keyframes flashRed {
+      0% {
+        color: #ff0000;
+      }
+      100% {
+        color: #cc0000;
+      }
+    }
+
+    @keyframes flashColor {
+      0% {
+        color: #fff176;
+      }
+      100% {
+        color: #ffecb3;
+      }
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 480px) {
+      #main-heading {
+        font-size: 4rem;
+      }
+      #main-heading.shrink {
+        font-size: 2.5rem;
+        top: 15vh;
+        color: #ff0000 !important; /* keep consistent on small screens */
+      }
+      #extra-info {
+        font-size: 1rem;
+        max-width: 90vw;
+      }
+      #instruction {
+        font-size: 0.9rem;
+        max-width: 90vw;
+      }
+      #countdown {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1 id="main-heading" aria-live="polite" aria-atomic="true">
+    400 | Oh No, Bad Request
+  </h1>
+
+  <div id="extra-info" aria-live="polite" aria-atomic="true" role="region" aria-label="Additional information">
+    <p>
+      Redirecting in <span id="countdown">15</span> seconds
+    </p>
+    <p>
+      If it doesn't work, click <a href="../webos-main/index.html" aria-label="Go to the bypass launcher UI">here</a> or press ctrl + X.
+    </p>
+    <p id="instruction">
+      Note: This is TOS Protect. You must press <kbd>Ctrl</kbd> + <kbd>Enter</kbd> on the lock screen to agree to the Terms of Service and access the bypass launcher UI. You will be redirected there shortly<br />
+      - HTMLtesterofficial
+    </p>
+  </div>
+
+  <script>
+    (function () {
+      const mainHeading = document.getElementById('main-heading');
+      const extraInfo = document.getElementById('extra-info');
+      const countdownEl = document.getElementById('countdown');
+      let secondsLeft = 15;
+      let countdownTimer;
+
+      function performRedirect() {
+        window.location.href = "../webos-main/index.html";
+      }
+
+      function onKeyDown(event) {
+        if (event.ctrlKey && (event.key === 'x' || event.key === 'X')) {
+          performRedirect();
+        }
+      }
+
+      function startCountdown() {
+        countdownTimer = setInterval(() => {
+          secondsLeft--;
+          if (secondsLeft <= 0) {
+            clearInterval(countdownTimer);
+            performRedirect();
+          } else {
+            countdownEl.textContent = secondsLeft;
+          }
+        }, 1000);
+      }
+
+      // Animate heading shrink and move up, then show extra info, then start countdown
+      function animateIntro() {
+        // Shrink and move up the heading
+        mainHeading.classList.add('shrink');
+
+        // Show extra info sliding up with opacity
+        extraInfo.classList.add('show');
+
+        // Start countdown after animation duration
+        setTimeout(startCountdown, 1200);
+      }
+
+      // Start animation after small delay to let user see big text
+      setTimeout(animateIntro, 1500);
+
+      window.addEventListener('keydown', onKeyDown);
+
+      // Cleanup on unload
+      window.addEventListener('unload', () => {
+        window.removeEventListener('keydown', onKeyDown);
+        clearInterval(countdownTimer);
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+        }
+        #countdown {
+            font-size: 2em;
+            margin: 20px 0;
+        }
+        #progressBar {
+            width: 100%;
+            height: 30px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+        }
+        #progress {
+            height: 100%;
+            background-color: red;
+            width: 100%;
+            transition: none; /* Disable transition for immediate updates */
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            margin: 5px;
+            transition: background-color 0.3s;
+        }
+        #cancelButton {
+            background-color: #ff6666;
+        }
+        #skipButton {
+            background-color: #4CAF50;
+        }
+        #cancelButton:hover {
+            background-color: #ff4c4c;
+        }
+        #skipButton:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Warning: You are leaving the bypass launcher</h1>
+    <div id="countdown">5</div>
+    <div id="progressBar">
+        <div id="progress"></div>
+    </div>
+    <button id="cancelButton">Cancel</button>
+    <button id="skipButton">Skip Countdown</button>
+</div>
+
+<script>
+    let countdown = 5;
+    let countdownDisplay = document.getElementById('countdown');
+    let progress = document.getElementById('progress');
+    let interval;
+
+    function startCountdown() {
+        interval = setInterval(() => {
+            countdown--;
+            countdownDisplay.textContent = countdown;
+
+            // Update the progress bar width in sync with timer
+            progress.style.width = (countdown / 5 * 100) + '%';
+
+            if (countdown <= 0) {
+                clearInterval(interval);
+                window.location.href = "https://iready-status.org/"; // Redirect to vpn
+            }
+        }, 1000);
+    }
+
+    document.getElementById('cancelButton').addEventListener('click', () => {
+        clearInterval(interval);
+        window.close(); // Close the tab
+    });
+
+    document.getElementById('skipButton').addEventListener('click', () => {
+        clearInterval(interval);
+        window.location.href = "https://iready-status.org/"; // Skip countdown and redirect
+    });
+
+    startCountdown(); // Start the countdown on page load
+</script>
+
+</body>
+</html>

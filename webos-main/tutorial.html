@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HTMLtester WebOS Guide</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f9fafc;
+  color: #2d2d2d;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+body {
+  /* Flex container to make footer sticky */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header, section {
+  flex: 1 0 auto; /* Allow content to grow */
+  max-width: 800px;
+  width: 100%;
+  margin: 20px auto;
+  padding: 25px 30px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 6px 15px rgba(25, 118, 210, 0.15);
+  transition: box-shadow 0.3s ease;
+  box-sizing: border-box;
+}
+
+header:hover,
+section:hover {
+  box-shadow: 0 10px 25px rgba(25, 118, 210, 0.3);
+}
+
+header {
+  text-align: center;
+}
+
+h1, h2, h3 {
+  margin-top: 0;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin-bottom: 0.5em;
+  color: #1a237e;
+  user-select: none;
+}
+
+h2 {
+  color: #1976d2;
+  margin-bottom: 0.5em;
+  border-left: 4px solid #1976d2;
+  padding-left: 0.5em;
+}
+
+h3 {
+  font-weight: 600;
+  color: #444;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 0.75em;
+}
+
+p, ol {
+  font-size: 1rem;
+  color: #444;
+  max-width: 760px;
+  margin-bottom: 1.25em;
+}
+
+ol {
+  padding-left: 1.5rem;
+}
+
+code {
+  background-color: #e3f2fd;
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-family: 'Source Code Pro', monospace, Consolas, monospace;
+  font-size: 0.95em;
+  color: #1565c0;
+}
+
+/* Footer styles */
+footer {
+  flex-shrink: 0; /* Do not shrink - stick at bottom */
+  position: relative; /* Not fixed to avoid overlaying */
+  background-color: #1a237e;
+  color: #fff;
+  padding: 15px 20px;
+  text-align: center;
+  box-shadow: 0 -3px 10px rgba(26, 35, 126, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  max-width: 800px;
+  width: 100%;
+  margin: 20px auto 40px; /* Space above footer + bottom page margin */
+  border-radius: 10px;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+footer p {
+  color: #000000;  /* black color */
+}
+
+footer button {
+  background-color: #1976d2;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  padding: 8px 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(25, 118, 210, 0.4);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  user-select: none;
+  white-space: nowrap;
+  min-width: 150px;
+}
+
+footer button:hover,
+footer button:focus-visible {
+  background-color: #0d47a1;
+  box-shadow: 0 6px 12px rgba(13, 71, 161, 0.6);
+  outline: none;
+}
+
+/* Responsive */
+@media (max-width: 820px) {
+  header, section, footer {
+    max-width: 95%;
+    padding: 20px 18px;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  footer {
+    flex-direction: column;
+    padding: 15px 10px;
+    margin: 20px auto 30px;
+  }
+  footer button {
+    width: 100%;
+    max-width: 320px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 0;
+  }
+  h1 {
+    font-size: 1.75rem;
+  }
+  footer p {
+    font-size: 0.9rem;
+  }
+}
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Welcome to the Bypass Launcher</h1>
+  <p>
+    Hello there! Welcome to the bypass launcher. Using the newest <strong>NBT (New Bypass Technology) 3.01</strong>, we proudly present the bypass launcher 3.01—a simple tool that lets you play games in class. Before we get started, here are 2 quick disclaimers.
+  </p>
+</header>
+
+<section>
+  <h2>There is No Proxy Link</h2>
+  <p>
+    A proxy link allows you to access a website by typing in a URL or a search query unblocked. Unfortunately, so many links get blocked within two days of being published, which makes reliability an issue. To ensure NBT 3.01 remains dependable, only links provided by trusted sources that won’t expose the URL publicly are included. The only exception to this is a long term proxy link that is not going to be blocked for at least the next 2 months after discovery (or more). However, these apps will be labeled as <code>(may not work)</code>
+  </p>
+</section>
+
+<section>
+  <h2>All the Apps Use About:blank Technology (or almost all)</h2>
+  <p>
+    About:blank technology allows you to hide the website or tab from your search history and your school's tracking software. This means a more secure and reliable experience, because if you type <code>about:blank</code> in a new tab, it shows a blank white screen. However, this also means that if you reload your app, the screen will turn white and do nothing until you relaunch the app from the bypass launcher UI.
+  </p>
+</section>
+
+<section>
+  <h2>Now to the Real Stuff</h2>
+
+  <article>
+    <h3>The Start Screen</h3>
+    <p>
+      When you load the bypass launcher, you’ll see a screen displaying <q><strong>Press Ctrl+Enter to start and press Ctrl+X for a tutorial.</strong></q> After reading the tutorial, return to the webOS lock screen and press <strong>Ctrl+Enter</strong> to begin your bypass launcher session. This action transitions you from the HTMLtester WebOS to the bypass launcher UI.
+    </p>
+  </article>
+
+  <article>
+    <h3>Navigating the Web Application</h3>
+    <p>
+      Once the session starts, you’ll notice a navigation menu indicated by three lines at the top left. Click the menu to navigate between the home page (bypass launcher UI), the about screen, the terms of service, or to lock the session and return to the WebOS screen.
+    </p>
+  </article>
+
+  <article>
+    <h3>Launching Eaglercraft</h3>
+    <p>
+      Eaglercraft is a free, open-source, AOT-compiled JavaScript version of Minecraft Java 1.8.8 that runs completely in your web browser, so there’s no need to install the game client. It is a cracked version, meaning that you’re not required to own an official Minecraft account.
+    </p>
+    <ol>
+      <li>Ensure you are on the bypass launcher UI.</li>
+      <li>Find and click the <em>"Launch Eaglercraft"</em> application.</li>
+      <li>Wait for the application to load, and you’re ready to play!</li>
+    </ol>
+    <p>
+      For multiplayer, note that only cracked Eaglercraft-supported Minecraft servers work. For example, Hypixel will not be compatible, but servers like Arch MC (<code>mc.arch.lol</code>) are supported. If an update is available, click <em>Download</em>. When finished, click <em>Install to Boot Menu</em> and then relaunch Eaglercraft. The boot menu will appear at startup—press Enter to select the latest update.
+    </p>
+  </article>
+
+  <article>
+    <h3>Singleplayer Games</h3>
+    <p>
+      The Singleplayer Games app lets you enjoy a variety of offline games that are unblocked and untracked. To launch it:
+    </p>
+    <ol>
+      <li>Ensure you are on the bypass launcher UI.</li>
+      <li>Click the <em>"Singleplayer Games"</em> application.</li>
+      <li>Within the app, click the text labeled <em>"Open Game Mode"</em> at the top to reveal a dropdown menu.</li>
+      <li>Select <em>"On This Tab"</em> to open the game in your current session.</li>
+    </ol>
+    <p>Select the game you want to play and enjoy!</p>
+  </article>
+
+  <article>
+    <h3>About:blank Embedder</h3>
+    <p>
+      The About:blank Embedder allows you to embed a website into an about:blank tab. This enables you to visit the desired site without it appearing in your search history or being tracked by the school system.
+    </p>
+    <ol>
+      <li>Make sure you are on the bypass launcher UI.</li>
+      <li>Click the <em>"About:blank Embedder"</em> application.</li>
+      <li>
+        A popup will open. Type in the URL you wish to embed—be sure to include <code>https://</code> before your website address.
+      </li>
+      <li>Hit Enter, then hit the button labeled <em>"embed about:blank"</em>.</li>
+    </ol>
+    <p>
+      <strong>Disclaimer:</strong> Any websites that do not support iframes or are blocked by the school will not work. For example, YouTube and now.gg.
+    </p>
+  </article>
+
+  <article>
+    <h3>Chat System</h3>
+    <p>
+      The Chat System is a way for anyone to communicate in or outside of school using ntfy.sh, a chatting website that allows users to subscribe to a topic and chat on that topic.
+    </p>
+    <ol>
+      <li>Ensure you are on the bypass launcher UI.</li>
+      <li>Click the <em>"Chat system for schools"</em> application.</li>
+      <li>You will be taken to the website in an about:blank tab. Sign up for ntfy.sh.</li>
+      <li>
+        Hit "subscribe to topic" and type in a unique name for your group. When others subscribe to your topic, you can all chat together.
+      </li>
+    </ol>
+    <p>
+      <strong>Note:</strong> Use a group name that only you and your trusted friends know; otherwise, anyone may join if they discover the topic name.
+    </p>
+  </article>
+
+</section>
+
+<section>
+  <h2>Congratulations</h2>
+  <p>
+    Congratulations on redeeming your copy of the bypass launcher. Now that you know how to start, you can return to the WebOS lock screen by hitting the button labeled "Return to the WebOS lock screen" down below to go back to the WebOS lock screen and begin your session.
+  </p>
+</section>
+
+<footer>
+  <p>© 2025 HTMLtester WebOS. All Rights Reserved.</p>
+  <button type="button" onclick="window.location.href='../index.html'">Return to the WebOS lock screen</button>
+</footer>
+
+</body>
+</html>
